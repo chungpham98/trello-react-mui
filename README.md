@@ -1,4 +1,4 @@
-### Base project for my MERN Stack Pro Course - Build Trello App
+### Base project for Trello App using React + Vite + Material UI
 
 ### Requirements - Thông tin của bộ Code Base này (Semantic Versioning)
 

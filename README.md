@@ -1,6 +1,6 @@
-### Base project for Trello App using React + Vite + Material UI
+### `Trello App using React + Vite + Material UI`
 
-### Requirements - Thông tin của bộ Code Base này (Semantic Versioning)
+### Requirements - Code Base Information (Semantic Versioning)
 
 ```
 * nodejs = v18.16.0

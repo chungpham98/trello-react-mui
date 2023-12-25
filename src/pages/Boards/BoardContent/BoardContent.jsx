@@ -4,7 +4,8 @@ import Column from './ListColumns/Column/Column'
 import Card from './ListColumns/Column/ListCards/Card/Card'
 import { mapOrder } from '~/utils/sorts'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isEmpty } from 'lodash'
+import { generatePlaceholderCard } from '~/utils/formatters'
 
 import {
   DndContext,
@@ -64,7 +65,7 @@ function BoardContent({ board }) {
     )
   }
 
-  // Xử lý di chuyển card giữa các columns khác nhau
+  // Function chung xử lý cập nhật state khi di chuyển card giữa các columns khác nhau
   const moveCardBetweenDifferentColumns = (
     active,
     over,
@@ -105,6 +106,11 @@ function BoardContent({ board }) {
           (card) => card._id !== activeDraggingId
         )
 
+        // Thêm Placeholder Card nếu column rỗng
+        if (isEmpty(nextActiveColumn.cards)) {
+          nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)]
+        }
+
         // Cập nhật lại mảng cardOrderIds
         nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(
           (card) => card._id
@@ -122,6 +128,11 @@ function BoardContent({ board }) {
           ...activeDraggingCardData,
           columnId: nextOverColumn._id,
         })
+
+        // Xoá Placeholder Card nếu có trong column không rỗng
+        nextOverColumn.cards = nextOverColumn.cards.filter(
+          (card) => !card.FE_PlaceholderCard
+        )
 
         // Cập nhật lại mảng cardOrderIds
         nextOverColumn.cardOrderIds = nextOverColumn.cards.map(

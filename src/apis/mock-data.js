@@ -36,7 +36,8 @@ export const mockData = {
             columnId: 'column-id-01',
             title: 'Title of card 01',
             description: 'Markdown Syntax',
-            cover: 'src/assets/avatar.JPG',
+            cover:
+              'https://clickup.com/blog/wp-content/uploads/2019/01/to-do-list-apps.png',
             memberIds: ['test-user-id-01'],
             comments: ['test comment 01', 'test comment 02'],
             attachments: [
